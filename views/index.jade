@@ -61,6 +61,12 @@ block body
 		//div.sticker#sticker-redstar
 		//	image(src="/images/stickers/sticker-redstar.png")
 
+	div.card_color
+		span Card color
+		select(id="card-color", name="card-color")
+			each value in [['random', 'Random'], ['yellow', 'Story (yellow)'], ['green', 'Middleware (green)'], ['blue', 'Task (blue)'], ['white', 'White'], ['pink', 'Pink']]
+				option(value="#{value[0]}") #{value[1]}
+		span
 
 	div.names
 		p connected:

@@ -489,8 +489,17 @@ function createCard(id, text, x, y, rot, colour) {
 
 }
 
+function getCardColour() {
+  var color;
+  if ('random' == $('#card-color').val())
+      color = randomCardColour();
+  else
+      color = $('#card-color').val();
+  return color;
+}
+
 function randomCardColour() {
-    var colours = ['yellow', 'green', 'blue', 'white'];
+    var colours = ['yellow', 'green', 'blue', 'white', 'pink'];
 
     var i = Math.floor(Math.random() * colours.length);
 
@@ -887,7 +896,7 @@ $(function() {
                 x, 
 				y,
                 rotation,
-                randomCardColour());
+                getCardColour());
         });
 
 
