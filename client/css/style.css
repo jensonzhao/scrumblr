@@ -650,7 +650,7 @@ img {
 	padding-top: 0;
 	padding-bottom: 0;
 }
-.export button, .import * {
+.export button, .import label {
     margin-right: 15px;
 }
 #revisions-list li > * {
