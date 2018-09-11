@@ -1,9 +1,9 @@
 {
   "name": "scrumblr",
   "description": "Web-based simulation of a physical agile sprint board that supports real-time collaboration.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": {
-    "url": "http://github.com/aliasaria/scrumblr"
+    "url": "https://github.com/li-on/scrumblr"
   },
   "author": "Ali Asaria",
   "main": "server.js",
@@ -18,6 +18,7 @@
     "compression": "^1.1.0",
     "express": "4.x",
     "jade": "~1.5.0",
+    "mongodb": "^3.1.4",
     "redis": "^2.4.2",
     "sanitizer": "~0.1.1",
     "simplesets": "~1.2.0",

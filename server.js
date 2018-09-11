@@ -2,7 +2,7 @@
  SYSTEM INCLUDES
 **************/
 var	http = require('http');
-var sys = require('sys');
+var sys = require('util');
 var	async = require('async');
 var sanitizer = require('sanitizer');
 var compression = require('compression');
@@ -409,8 +409,9 @@ function initClient ( client )
 		});
 		
 		db.getPassword( room, function(passwrd) {
-			
-			if (passwrd !== null) {
+			//remove this if to disable passwords
+			//TODO: config support
+			if (passwrd) {
 				client.json.send (
 					{
 						action: 'requirePassword',

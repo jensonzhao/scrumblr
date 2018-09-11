@@ -627,9 +627,11 @@ function changeThemeTo(theme) {
 }
 
 function changeFontTo(font) {
-    currentFont = font;
-    $(".card .content").css("font-family", font.family);
-	$(".card .content").css("font-size", font.size);
+    if(font!=undefined){
+	currentFont = font;
+        $(".card .content").css("font-family", font.family);
+		$(".card .content").css("font-size", font.size);
+    }
 }
 
 
