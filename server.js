@@ -10,6 +10,11 @@ var compression = require('compression');
 var express = require('express');
 var conf = require('./config.js').server;
 var ga = require('./config.js').googleanalytics;
+var i18next = require('i18next');
+var i18nextBrowserLanguageDetector = require('i18next-browser-languagedetector');
+var i18nBackend = require('i18next-node-fs-backend');
+var i18nMiddleware = require("i18next-express-middleware");
+
 
 /**************
  LOCAL INCLUDES
@@ -24,12 +29,59 @@ var	data	= require('./lib/data.js').db;
 var sids_to_user_names = [];
 
 /**************
+ i18n
+**************/
+i18next.use(i18nBackend).use(i18nMiddleware.LanguageDetector).init({//.use(i18nextBrowserLanguageDetector)
+	backend: {
+		loadPath: __dirname + '/locales/{{lng}}/{{ns}}.json',
+		addPath: __dirname + '/locales/{{lng}}/{{ns}}.missing.json',
+		jsonIndent: 2,
+	},
+	detection: {
+		// order and from where user language should be detected
+		order: ['querystring', 'cookie', 'header'],
+
+		// keys or params to lookup language from
+		lookupQuerystring: 'lng',
+		lookupCookie: 'i18next',
+		lookupSession: 'lng',
+		lookupPath: 'lng',
+		lookupFromPathIndex: 0,
+
+		// cache user language
+		caches: false // ['cookie']
+	},
+	whitelist: ['en','pl'],
+	ns: 'translation',
+	fallbackLng: 'en',
+    saveMissing: true,
+    debug: false
+});
+
+
+//force language in config
+if(conf.lang){
+	i18next.changeLanguage(conf.lang);
+}
+
+/**************
  SETUP EXPRESS
 **************/
 var app = express();
-var router = express.Router();
 
 app.use(compression());
+
+app.set('view engine', 'pug')
+app.use(
+  i18nMiddleware.handle(i18next, {
+    //ignoreRoutes: ["/foo"],
+    removeLngFromUrl: false
+  })
+);
+
+
+var router = express.Router();
+
 app.use(conf.baseurl, router);
 
 app.locals.ga = ga.enabled;
@@ -60,7 +112,7 @@ router.get('/', function(req, res) {
 	var connected = io.sockets.connected;
 	clientsCount = Object.keys(connected).length;
 
-	res.render('home.jade', {
+	res.render('home.pug', {
 		url: url,
 		connected: clientsCount
 	});
@@ -68,17 +120,23 @@ router.get('/', function(req, res) {
 
 
 router.get('/demo', function(req, res) {
-	res.render('index.jade', {
+	res.render('index.pug', {
 		pageTitle: 'scrumblr - demo',
 		demo: true
 	});
 });
 
 router.get('/:id', function(req, res){
-	res.render('index.jade', {
+	res.render('index.pug', {
 		pageTitle: ('scrumblr - ' + req.params.id)
 	});
 });
+
+// missing keys
+//router.post("/locales/add/:lng/:ns", i18nMiddleware.missingKeyHandler(i18next));
+
+// multiload backend route
+router.get("/locales/resources.json", i18nMiddleware.getResourcesHandler(i18next));
 
 
 /**************

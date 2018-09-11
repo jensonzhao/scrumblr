@@ -1,0 +1,42 @@
+{
+  "board": {
+    "connected": "connected:",
+    "you": "(you)",
+    "export": "Export board",
+    "text_format": "Text format",
+    "csv_format": "CSV format",
+    "json_format": "JSON format (for import in Scrumblr)",
+    "import": "Import board",
+    "import_input": "JSON file to import",
+	"import_button": "Import",
+    "revisions": "Revisions",
+    "create_revision": "Create revision",
+    "demo_notice": "this is a demo board. to make a private board, go to",
+    "home_link": "home page"
+  },
+  "server": {
+    "disconnected": "Server disconnected. Refresh page to try and reconnect...",
+    "waiting": "Waiting ..."
+  },
+  "column": {
+    "placeholder": "New"
+  },
+  "card": {
+    "placeholder": "Double Click to Edit.",
+    "color": {
+      "title": "Card color",
+      "random": "Random",
+      "yellow": "Story (yellow)",
+      "green": "Middleware (green)",
+      "blue": "Task (blue)",
+      "white": "White",
+      "pink": "Pink"
+    }
+  },
+  "home": {
+    "new_board_name": "name your new board:",
+    "go": "go!",
+    "example": "example board:",
+    "connections": "connections: {{connected}}"
+  }
+}

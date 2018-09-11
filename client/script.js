@@ -11,7 +11,7 @@ var keyTrap = null;
 var baseurl = location.pathname.substring(0, location.pathname.lastIndexOf('/'));
 var socket = io.connect({path: baseurl + "/socket.io"});
 
-moment.locale(navigator.language || navigator.languages[0]);
+moment.locale(SCRUMBLR_LANG);
 
 //an action has happened, send it to the
 //server
@@ -37,7 +37,7 @@ socket.on('connect', function() {
 });
 
 socket.on('disconnect', function() {
-    blockUI("Server disconnected. Refresh page to try and reconnect...");
+    blockUI(translation['server.disconnected']);
     //$('.blockOverlay').click($.unblockUI);
 });
 
@@ -50,7 +50,7 @@ function unblockUI() {
 }
 
 function blockUI(message) {
-    message = message || 'Waiting...';
+    message = message || translation['server.waiting'];
 
     $.blockUI({
         message: message,
@@ -419,7 +419,7 @@ function drawNewCard(id, text, x, y, rot, colour, sticker, animationspeed) {
         submit: 'OK',
         style: 'inherit',
         cssclass: 'card-edit-form',
-        placeholder: 'Double Click to Edit.',
+        placeholder: translation['card.placeholder'],
         onblur: 'submit',
         event: 'dblclick', //event: 'mouseover'
     });
@@ -472,6 +472,7 @@ function addSticker(cardId, stickerId) {
 // cards
 //----------------------------------
 function createCard(id, text, x, y, rot, colour) {
+	console.log(colour);
     drawNewCard(id, text, x, y, rot, colour, null);
 
     var action = "createCard";
@@ -554,7 +555,7 @@ function drawNewColumn(columnName) {
         style: 'inherit',
         cssclass: 'card-edit-form',
         type: 'textarea',
-        placeholder: 'New',
+        placeholder: translation['column.placeholder'],
         onblur: 'submit',
         width: '',
         height: '',
@@ -870,7 +871,6 @@ function addRevision(timestamp) {
 
 $(function() {
 
-
 	//disable image dragging
 	//window.ondragstart = function() { return false; };
 
@@ -1017,7 +1017,7 @@ $(function() {
 
     $('#add-col').click(
         function() {
-            createColumn('New');
+            createColumn(translation['column.placeholder']);
             return false;
         }
     );

@@ -1,0 +1,42 @@
+{
+  "board": {
+    "connected": "osoby:",
+    "you": "(ty)",
+    "export": "Eksport tablicy",
+    "text_format": "Format tekstowy",
+    "csv_format": "Format CSV",
+    "json_format": "Format JSON (do importu w Scrumblr)",
+    "import": "Importuj tablicę",
+    "import_input": "Plik JSON do importu",
+	"import_button": "Importuj",
+    "revisions": "Rewizje",
+    "create_revision": "Utwórz rewizję",
+    "demo_notice": "to jest tablica demonstracyjna, aby utowrzyć prywatną tablicę przejdź na",
+    "home_link": "stronę główną"
+  },
+  "server": {
+    "disconnected": "Serwer odłączony. Odśwież stronę aby spróbować połączyć się ponownie...",
+    "waiting": "Oczekiwanie ..."
+  },
+  "column": {
+    "placeholder": "Nowa"
+  },
+  "card": {
+    "placeholder": "Kliknij aby edytować.",
+    "color": {
+      "title": "Kolor karteczki",
+      "random": "Losowy",
+      "yellow": "Story (żółty)",
+      "green": "Middleware (zielony)",
+      "blue": "Task (niebieski)",
+      "white": "Biały",
+      "pink": "Różowy"
+    }
+  },
+  "home": {
+    "new_board_name": "nazwa nowej tablicy:",
+    "go": "go!",
+    "example": "przykładowa tablica:",
+    "connections": "podłączone osoby: {{connected}}"
+  }
+}
