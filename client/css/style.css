@@ -669,7 +669,7 @@ img {
 
 .tools {
     float: left;
-    width: 400px;
+    width: 600px;
 }
 .export button, .import label {
     margin-right: 15px;
