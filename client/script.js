@@ -1180,4 +1180,8 @@ $(function() {
             }
         });
     })
+    
+    $('#card-color').change(function(){
+        $(this).attr('style', $(this).children(':selected').attr('style'));
+    });
 });
