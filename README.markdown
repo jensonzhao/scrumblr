@@ -5,7 +5,7 @@ what is it
 ----------
 This is form of scrumblr - a web-based simulation of a physical agile kanban board that supports real-time collaboration. it is built using node.js, websockets (using socket.io), CSS3, and jquery. i hope you like it.
 
-![Wellca Board](http://scrumblr.ca/images/screenshot.png)
+![Demo Board](client/images/screenshot.png?raw=true)
 
 use scrumblr
 ------------
