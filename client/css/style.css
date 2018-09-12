@@ -228,6 +228,8 @@ h2 {
 	background: white;
 	border-radius: 5px;
 	opacity: 0.5;
+    width: 65px;
+    text-align: center;
 }
 
 .buttons:hover {
@@ -236,13 +238,13 @@ h2 {
 
 .names {
 	padding-left: 10px;
-	width: 980px;
+	width: 300px;
 	text-align: right;
 	color: #bbb;
 	letter-spacing: 4px;
 	font-family:  "Helvetica Neue Light", "HelveticaNeue-Light", 'Helvetica Neue', arial, serif;
 	font-size: 13px;
-
+    float: right;
 }
 
 .names p {
@@ -325,11 +327,25 @@ xopacity: .5;
 }
 
 .stickers {
-	width: 1000px;
+    position: fixed;
+    z-index: 1000;
+    top: 280px;
+	right: 15px;
+	width: 65px;
 	text-align: right;
-	padding-top: 2px; margin: 0;
+	padding: 10px;
+   	background: white;
+	border-radius: 5px;
+	opacity: 0.5;
 }
 
+.stickers:hover {
+	opacity: 0.95;
+}
+
+#card-color{
+    width: 55px;
+}
 
 #sticker-red {
 	background-image: url('../images/stickers/sticker-red.png');
@@ -649,6 +665,11 @@ img {
 	margin-bottom: 0;
 	padding-top: 0;
 	padding-bottom: 0;
+}
+
+.export {
+    float: left;
+    width: 400px;
 }
 .export button, .import label {
     margin-right: 15px;

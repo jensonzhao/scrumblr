@@ -26,6 +26,14 @@ block body
 	div.buttons
 		i#create-card.fa.fa-plus-circle.fa-2x.bottom-icon
 		br
+		select(id="card-color", name="card-color", title=t('card.color.title'))
+            option(value="random", style="background-image: linear-gradient(to right,white,yellow,green,blue)") #{t('card.color.random')}
+            option(value="yellow", style="background-color: yellow") #{t('card.color.yellow')}
+            option(value="green", style="background-color: green") #{t('card.color.green')}
+            option(value="blue", style="background-color: blue; color:white") #{t('card.color.blue')}
+            option(value="white", style="background-color: white") #{t('card.color.white')}
+            option(value="pink", style="background-color: pink") #{t('card.color.pink')}
+        br
 		i#smallify.fa.fa-expand.fa-2x.bottom-icon
 		br
 		i#fontify.fa.fa-font.fa-2x.bottom-icon
@@ -60,13 +68,6 @@ block body
 			img(src="/images/stickers/sticker-silverstar.png")
 		div.sticker#sticker-redstar
 			img(src="/images/stickers/sticker-redstar.png")
-
-	div.card_color
-		span=t('card.color.title')
-		select(id="card-color", name="card-color")
-			each value in ['random','yellow','green','blue', 'white', 'pink']
-				option(value=value) #{t('card.color.'+value)}
-		span
 
 	div.names
 		p=t('board.connected')
