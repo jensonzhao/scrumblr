@@ -494,11 +494,11 @@ function initClient ( client )
 		});
 		
 		db.getAllColumns ( room, function (columns) {
-				
+			
 			client.json.send(
 				{
 					action: 'initColumns',	
-					data: columns
+					data: columns || []
 				}
 			);
 		});
