@@ -1,0 +1,10 @@
+applications:
+  - name: board
+    routes:
+      - route: board.cfapps.sap.hana.ondemand.com
+    path: ./
+    buildpack: https://github.com/cloudfoundry/nodejs-buildpack.git#v1.6.34
+    memory: 1024M
+    timeout: 90
+    services:
+      - board-db
