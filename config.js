@@ -1,14 +1,14 @@
-let uri;
+let mongo = {};
 if (process.env.VCAP_SERVICES) {
-	uri = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials.uri;
+	mongo = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials;
 }
 
 exports.database = {
 	type: 'mongodb',
-	hostname: 'localhost',
-	port: 27017,
-	database: 'scrumblr',
-	uri: uri || 'mongodb://localhost:27017'
+	hostname: mongo.hostname || 'localhost',
+	port: mongo.port || 27017,
+	database: mongo.dbname || 'scrumblr',
+	uri: mongo.uri || 'mongodb://localhost:27017'
 };
 
 
