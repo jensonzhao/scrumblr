@@ -1,8 +1,14 @@
+let uri;
+if (process.env.VCAP_SERVICES) {
+	uri = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials.uri;
+}
+
 exports.database = {
 	type: 'mongodb',
 	hostname: 'localhost',
 	port: 27017,
-	database: 'scrumblr'
+	database: 'scrumblr',
+	uri: uri || 'mongodb://localhost:27017'
 };
 
 
@@ -11,7 +17,7 @@ var argv = require('yargs')
         .argv;
 
 exports.server = {
-	port: argv.port || 80,
+	port: argv.port || 8080,
 	baseurl: argv.baseurl || '/',
 	//force language
 	//lang: 'en'
